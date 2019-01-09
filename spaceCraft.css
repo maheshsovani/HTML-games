@@ -1,0 +1,32 @@
+.background {
+  border: 2px solid black;
+  width: 1260px;
+  height: 500px;
+  margin: 0 auto;
+  background-image: url(https://i.pinimg.com/originals/c9/29/81/c9298127489e6dd279e8bf4d0bb81351.gif);
+}
+
+.spaceCraftPosition {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  left: 10px;
+  top: 50px;
+}
+
+div#stoneObstacle {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  left: 1140px;
+  top: 350px;
+  position: absolute;
+}
+
+div#birdObstacle {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  left: 750px;
+  top: 200px;
+}

@@ -1,41 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Game</title>
-    <script src="game.js"></script>
+    <title>spaceCraft</title>
+    <link rel="stylesheet" href="spaceCraft.css" />
   </head>
-  <div
-    id="myCanvas"
-    style="border:2px solid black;width:1260px;height:500px; background-image: url(https://i.pinimg.com/originals/c9/29/81/c9298127489e6dd279e8bf4d0bb81351.gif)"
-  ></div>
 
   <body onkeydown="moveSpaceCraft(event)">
-    <img
-      src="https://opengameart.org/sites/default/files/styles/medium/public/spaceship_2.png"
-      alt="spaceCraft"
-      style="width: 150px;height:150px;position:absolute;left:10px;top:50px;"
-      id="spaceCraft"
-    />
+    <div class="background"></div>
 
-    <div id="stoneObst" style="position:absolute;left:1140px;top:350px;">
-      <img
-        src="https://opengameart.org/sites/default/files/styles/medium/public/1346943991.png"
-        alt="obstacle"
-        style="width: 150px;height:150px"
-      />
+    <img alt="spaceship_2" class="spaceCraftPosition" id="spaceCraft" />
+
+    <div id="stoneObstacle">
+      <img src="/images/stoneObstacle.png" alt="stoneObstacle" />
     </div>
 
-    <div id="birdObstacle" style="position:absolute;left:750px;top:200px;">
-      <img
-        src="https://opengameart.org/sites/default/files/condorFlapPrev.gif"
-        alt="obstacle"
-        style="width: 150px;height:150px"
-      />
+    <div id="birdObstacle">
+      <img src="/images/birdObstacle.gif" alt="birdObstacle" />
     </div>
 
     <button onclick="moveStoneObstacle(), moveBirdObstacle()">
-      make mover
+      start game
     </button>
-    <!-- <button onclick="moveBirdObstacle()">move bird</button> -->
+
+    <script src="spaceCraft.js"></script>
   </body>
 </html>

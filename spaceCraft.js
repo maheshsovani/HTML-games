@@ -1,5 +1,9 @@
 const makeAttributeStone = function(right) {
-  return 'position:absolute;right:' + right + 'px;top:350px;';
+  return (
+    'position:absolute;right:' +
+    right +
+    'px;top:350px;left: 1140px;width:150px;height:150px'
+  );
 };
 
 const range = function(num1, num2) {
@@ -16,13 +20,12 @@ const generateRandom = function(maxValue, minValue) {
 const moveStoneObstacle = function() {
   let left = 160;
   setInterval(() => {
-    document
-      .getElementById('stoneObst')
-      .setAttribute('style', makeAttributeStone(left));
-    obst = document.getElementById('stoneObst');
+    let stoneObstacle = document.getElementById('stoneObstacle');
+
+    stoneObstacle.setAttribute('style', makeAttributeStone(left));
     let spaceCraft = document.getElementById('spaceCraft');
     let spaceCraftTop = +spaceCraft.style.top.replace('px', '');
-    let obstacleTop = obst.style.top.replace('px', '');
+    let obstacleTop = stoneObstacle.style.top.replace('px', '');
     left += 5;
     if (left > 1150) {
       left = generateRandom(400, 1);
@@ -37,18 +40,22 @@ const moveStoneObstacle = function() {
 };
 
 const makeAttributeBird = function(right, top) {
-  return 'position:absolute;right:' + right + 'px;top:' + top + 'px;';
+  return (
+    'position:absolute;right:' +
+    right +
+    'px;top:' +
+    top +
+    'px;left: 750px;width:150px;height:150px'
+  );
 };
 
 const moveBirdObstacle = function() {
   let left = 400;
-  obst = document.getElementById('birdObstacle');
+  let birdObstacle = document.getElementById('birdObstacle');
   spaceCraft = document.getElementById('spaceCraft');
-  let birdTop = obst.style.top.replace('px', '');
+  let birdTop = birdObstacle.style.top.replace('px', '');
   setInterval(() => {
-    document
-      .getElementById('birdObstacle')
-      .setAttribute('style', makeAttributeBird(left, birdTop));
+    birdObstacle.setAttribute('style', makeAttributeBird(left, birdTop));
     left += 5;
     spaceCraftTop = +spaceCraft.style.top.replace('px', '');
     if (left > 1150) {
@@ -81,3 +88,10 @@ const moveSpaceCraft = function(event) {
     ship.style.top = mytop + 'px';
   }
 };
+
+const initialize = function() {
+  let spaceCraftImage1 = document.getElementById('spaceCraft');
+  spaceCraftImage1.src = '/images/spaceship_2.png';
+};
+
+window.onload = initialize();
