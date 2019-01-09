@@ -8,39 +8,52 @@ const checkCommand = function(event) {
   }
 };
 
-let setfocustotext = function() {
+const setfocustotext = function() {
   getElement('usrip').focus();
 };
 
-const checkAccuracy = function(event) {
-  let correctWords = 0;
+const setInnerText = function(id, text) {
+  getElement(id).innerText = text;
+};
+
+const checkAccuracy = function() {
   let userText = getElement('usrip').value.split(' ');
   let originalText = getElement('para').textContent.split(' ');
+  let accuracy = compareTexts(userText, originalText);
+  if (userText.length == originalText.length) {
+    getElement('accuracyDiv').innerText =
+      'congratulations you have cleared this level' +
+      compareTexts(userText, originalText);
+    clearInterval(typingOverId);
+  }
+  setInnerText('accuracyDiv', accuracy + ':' + Math.floor(accuracy));
+};
 
-  for (let i = 0; i < originalText.length; i++) {
-    if (userText[i] == originalText[i]) {
+const isNotEmpty = function(text) {
+  return text.length != 0;
+};
+
+const compareTexts = function(text1, text2) {
+  let correctWords = 0;
+  let accuracy;
+
+  for (let i = 0; i < text1.length; i++) {
+    if (text1[i] == text2[i]) {
       correctWords += 1;
     }
-
-    if (userText.length == originalText.length) {
-      getElement('accuracyDiv').innerText =
-        'congratulations you have cleared this level';
-    }
-
-    let accuracy = (correctWords / userText.length) * 100;
-    getElement('accuracyDiv').innerText = 'ACCURACY :' + Math.floor(accuracy);
+    accuracy = (correctWords / text1.length) * 100;
   }
+  return accuracy;
 };
 
 const displayTime = function(seconds) {
-  let timer = document.getElementById('timer');
-  setInterval(() => {
+  typingOverId = setInterval(() => {
     seconds -= 1;
     let minutes = Math.floor(seconds / 60);
     let second = seconds % 60;
-    timer.innerText = 'Time left - ' + minutes + '  :  ' + second;
+    setInnerText('timer', 'Time left -' + minutes + ':' + second);
     if (minutes < 0) {
-      timer.innerText = 'Times up try again';
+      setInnerText('timer', 'Times up try again');
     }
   }, 1000);
 };
@@ -60,8 +73,8 @@ const setInnerContent = function(level) {
   getElement('para').innerText = getContent(level);
 };
 
-const firstlevelText =
-  'this lesson will teach you the keys to became a typing master. on this lesson you will learn the three basic rules you should always reme';
+const firstlevelText = 'this lesson';
+// 'this lesson will teach you the keys to became a typing master. on this lesson you will learn the three basic rules you should always reme';
 
 const secondlevelText =
   'At the heart of Typing Tournament Online is a vast bank of carefully controlled, precisely Sequenced Text Resources that have been designed to reinforce the learning of the key strokes, build muscle memory and engage the learner.';
