@@ -1,0 +1,41 @@
+button {
+  font-size: 15px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  color: blue;
+}
+
+p {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 20px;
+  border: 2px solid blue;
+  width: 900px;
+  height: 200px;
+}
+
+textarea {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 20px;
+  border: 2px solid blue;
+  width: 900px;
+  height: 200px;
+}
+
+.spacesAroundFlex {
+  width: 960px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.timeAccuracy {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: lightgray;
+  width: 910px;
+}
